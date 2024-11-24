@@ -593,7 +593,8 @@ Optional argument END is the --end date string for journal entries."
                           (mapconcat 'identity accounts-list " ")
                           (if beg (concat " --begin " beg) "")
                           " --end " (or end date-now)
-                          " --depth 1"
+                          " --depth 1 "
+                          " -V "
                           " --format "
                           (shell-quote-argument "\"%(account)\" %(total) "))))
          (elisp-string (concat "("
