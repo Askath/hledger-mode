@@ -72,8 +72,10 @@
   "Regular expression to match a floating point number.")
 
 (defun hledger-amount-regex ()
-  "Regular expression to match an inserted amount in rupees."
-  (format "\\<%s\\s-*[-]?[0-9,]+\\(\\.[0-9]+\\)?\\>" (regexp-quote hledger-currency-string)))
+  "Regular expression to match an inserted amount with currency symbol as prefix or suffix."
+  (format "\\<\\(%s\\s-*[-]?[0-9,]+\\(\\.[0-9]+\\)?\\|[-]?[0-9,]+\\(\\.[0-9]+\\)?\\s-*%s\\)\\>"
+          (regexp-quote hledger-currency-string)
+          (regexp-quote hledger-currency-string)))
 
 (defun hledger-whitespace-amount-regex ()
   "Regular expression for whitespace followed by amount."

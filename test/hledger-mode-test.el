@@ -38,12 +38,15 @@
     (should (= (match-beginning 0) 0))
     (should (= (match-end 0) 34))))
 
-
 (setq hledger-currency-string "$")
 
 (ert-deftest ert-test-amount-with-different-currency-string ()
   "Test matching an amount after changing the currency string to dollars"
   (should (equal (first-amount-match "$400.00") "$400.00")))
+
+(ert-deftest ert-test-amount-with-different-currency-string-as-suffix ()
+  "Test matching an amount after changing the currency string to dollars"
+  (should (equal (first-amount-match "400.00$") "400.00$")))
 
 (ert-deftest ert-test-amount-with-comma ()
   "Test amount matching containing a comma"
